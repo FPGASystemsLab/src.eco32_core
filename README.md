@@ -49,81 +49,36 @@ Below, the processor's features are described, starting from showing its structu
 The processor has two banks of general-purpose registers, A and B, with 32-bit registers accessible at the assembler level without the need to "switch banks". This term only relates to the situation of pairing registers when we want to use them simultaneously (description Axx:Bxx) where the command description contains information on how data from bank A and B are interpreted. For example, addressing through Axx:Bxx means that Axx contains the base address and Bxx contains the offset.
 Additionally, the processor includes two banks of control registers, CRA and CRB, which are also 32-bit and organized in pairs. This allows, for example, for the separation of registers used by the kernel for thread switching and storing data about addresses and control markers in one pair of CARxx:CRBxx.
 
-#### General Purpose Registers
+#### General Purpose and Control Registers
 
-| Bank A Register | Description | Bank B Register | Description |
-|-----------------|-------------|-----------------|-------------|
-| A0              | ZERO        | B0              | ZERO        |
-| A1              | VL          | B1              | VH (n)      |
-| A2              | ARG0        | B2              | (tmp)       |
-| A3              | ARG1        | B3              | (tmp)       |
-| A4              | ARG2        | B4              | (tmp)       |
-| A5              | ARG3        | B5              | (tmp)       |
-| A6              | ARG4        | B6              | (tmp)       |
-| A7              | ARG5        | B7              | (tmp)       |
-| A8              | (saved)     | B8              | (saved)     |
-| A9              | (saved)     | B9              | (saved)     |
-| A10             | (saved)     | B10             | (saved)     |
-| A11             | (saved)     | B11             | (saved)     |
-| A12             | (saved)     | B12             | (saved)     |
-| A13             | (saved)     | B13             | (saved)     |
-| A14             | (saved)     | B14             | (saved)     |
-| A15             | (saved)     | B15             | (saved)     |
-| A16             | (saved)     | B16             | (saved)     |
-| A17             | (saved)     | B17             | (saved)     |
-| A18             | (saved)     | B18             | (saved)     |
-| A19             | (saved)     | B19             | (saved)     |
-| A20             | -           | B20             | -           |
-| A21             | -           | B21             | -           |
-| A22             | -           | B22             | -           |
-| A23             | -           | B23             | -           |
-| A24             | -           | B24             | -           |
-| A25             | -           | B25             | -           |
-| A26             | -           | B26             | -           |
-| A27             | -           | B27             | -           |
-| A28             | GP          | B28             | KGP         |
-| A29             | FP          | B29             | KFP         |
-| A30             | SP          | B30             | KSP         |
-| A31             | LR          | B31             | LX          |
-
-
-
-Control Registers 
-
-| Bank A Register | Description        | Bank B Register | Description      |
-|-----------------|--------------------|-----------------|------------------|
-| CRA0            | Flags              | CRB0            | Flags            |
-| CRA1            | -                  | CRB1            | reserved         |
-| CRA2            | -                  | CRB2            | reserved         |
-| CRA3            | -                  | CRB3            | reserved         |
-| CRA4            | -                  | CRB4            | reserved         |
-| CRA5            | -                  | CRB5            | reserved         |
-| CRA6            | Counter Lo         | CRB6            | Counter Hi       |
-| CRA7            | Processor ID       | CRB7            | Processor CAP    |
-| CRA8            | Thread ctx         | CRB8            | Thread param     |
-| CRA9            | Thread ctx         | CRB9            | Thread param     |
-| CRA10           | Debug control      | CRB10           | Debug flags      |
-| CRA11           | Debug control      | CRB11           | Debug flags      |
-| CRA12           | SystemTemp         | CRB12           | SystemTemp       |
-| CRA13           | System             | CRB13           | System           |
-| CRA14           | Event Ctrl         | CRB14           | Event Flags      |
-| CRA15           | Event Data Lo      | CRB15           | Event Data Hi    |
-| CRA16           | SysCall 0          | CRB16           | reserved         |
-| CRA17           | SysCall 1          | CRB17           | reserved         |
-| CRA18           | SysCall 2          | CRB18           | reserved         |
-| CRA19           | SysCall 3          | CRB19           | reserved         |
-| CRA20           | SysCall 4          | CRB20           | reserved         |
-| CRA21           | SysCall 5          | CRB21           | reserved         |
-| CRA22           | SysCall 6          | CRB22           | reserved         |
-| CRA23           | SysEvent           | CRB23           | reserved         |
-| CRA24           | RetAddr0 - Int Exc | CRB24           | Ret_ISW0         |
-| CRA25           | RetAddr1 - Dbg Exc | CRB25           | Ret_ISW1         |
-| CRA26           | RetAddr2 - Ext Exc | CRB26           | Ret_ISW2         |
-| CRA27           | RetAddr3 - TLB Exc | CRB27           | Ret_ISW3         |
-| CRA28           | JP_ADDR0           | CRB28           | JP_ISW0          |
-| CRA29           | JP_ADDR1           | CRB29           | JP_ISW1          |
-| CRA30           | JP_ADDR2           | CRB30           | JP_ISW2          |
-| CRA31           | JP_ADDR3           | CRB31           | JP_ISW3          |
+|| GPR Bank A Register | Description        | GPR Bank B Register | Description      | CR Bank A Register | CR Description        | CR Bank B Register | CR Description      |
+|---------------------|--------------------|---------------------|------------------|---------------------|-----------------------|---------------------|---------------------|
+| A0                  | ZERO               | B0                  | ZERO             | CRA0                | Flags                 | CRB0                | Flags               |
+| A1                  | VL                 | B1                  | VH (n)           | CRA1                | -                     | CRB1                | reserved            |
+| A2                  | ARG0               | B2                  | (tmp)            | CRA2                | -                     | CRB2                | reserved            |
+| A3                  | ARG1               | B3                  | (tmp)            | CRA3                | -                     | CRB3                | reserved            |
+| A4                  | ARG2               | B4                  | (tmp)            | CRA4                | -                     | CRB4                | reserved            |
+| A5                  | ARG3               | B5                  | (tmp)            | CRA5                | -                     | CRB5                | reserved            |
+| A6                  | ARG4               | B6                  | (tmp)            | CRA6                | Counter Lo            | CRB6                | Counter Hi          |
+| A7                  | ARG5               | B7                  | (tmp)            | CRA7                | Processor ID          | CRB7                | Processor CAP       |
+| A8                  | (saved)            | B8                  | (saved)          | CRA8                | Thread ctx            | CRB8                | Thread param        |
+| A9                  | (saved)            | B9                  | (saved)          | CRA9                | Thread ctx            | CRB9                | Thread param        |
+| A10                 | (saved)            | B10                 | (saved)          | CRA10               | Debug control         | CRB10               | Debug flags         |
+| A11                 | (saved)            | B11                 | (saved)          | CRA11               | Debug control         | CRB11               | Debug flags         |
+| A12                 | (saved)            | B12                 | (saved)          | CRA12               | SystemTemp            | CRB12               | SystemTemp          |
+| A13                 | (saved)            | B13                 | (saved)          | CRA13               | System                | CRB13               | System              |
+| A14                 | (saved)            | B14                 | (saved)          | CRA14               | Event Ctrl            | CRB14               | Event Flags         |
+| A15                 | (saved)            | B15                 | (saved)          | CRA15               | Event Data Lo         | CRB15               | Event Data Hi       |
+| A16                 | (saved)            | B16                 | (saved)          | CRA16               | SysCall 0             | CRB16               | reserved            |
+| A17                 | (saved)            | B17                 | (saved)          | CRA17               | SysCall 1             | CRB17               | reserved            |
+| A18                 | (saved)            | B18                 | (saved)          | CRA18               | SysCall 2             | CRB18               | reserved            |
+| A19                 | (saved)            | B19                 | (saved)          | CRA19               | SysCall 3             | CRB19               | reserved            |
+| A20                 | -                  | B20                 | -                | CRA20               | SysCall 4             | CRB20               | reserved            |
+| A21                 | -                  | B21                 | -                | CRA21               | SysCall 5             | CRB21               | reserved            |
+| A22                 | -                  | B22                 | -                | CRA22               | SysCall 6             | CRB22               | reserved            |
+| A23                 | -                  | B23                 | -                | CRA23               | SysEvent              | CRB23               | reserved            |
+| A24                 | -                  | B24                 | -                | CRA24               | RetAddr0 - Int Exc    | CRB24               | Ret_ISW0            |
+| A25                
 
 
 
