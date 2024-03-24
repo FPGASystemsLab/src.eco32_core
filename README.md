@@ -30,7 +30,6 @@ ECO32 is an innovative microprocessor project designed for FPGA implementation, 
 
 Control Registers 
 
-|-----------------|--------------------|-----------------|------------------|
 | Bank A Register | Description        | Bank B Register | Description      |
 |-----------------|--------------------|-----------------|------------------|
 | CRA0            | Flags              | CRB0            | Flags            |
@@ -65,7 +64,6 @@ Control Registers
 | CRA29           | JP_ADDR1           | CRB29           | JP_ISW1          |
 | CRA30           | JP_ADDR2           | CRB30           | JP_ISW2          |
 | CRA31           | JP_ADDR3           | CRB31           | JP_ISW3          |
-|-----------------|--------------------|-----------------|------------------|
 
 
 
