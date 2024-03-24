@@ -82,6 +82,20 @@ Additionally, the processor includes two banks of control registers, CRA and CRB
 
 
 
+Register CRA0:CRB0 - Flags
+
+| Bit | Flag | Description                                                      | Source         |
+|-----|------|------------------------------------------------------------------|----------------|
+| 8   | I    | Infinity - Indicates the result of the FP operation is infinity  | Floating Point |
+| 7   | N    | NaN (Not a Number) - Indicates the result cannot be represented as a real number | Floating Point |
+| 6   | D    | Denormalized - Indicates a denormalized floating-point number   | Floating Point |
+| 5   | -    | Not utilized                                                     | -              |
+| 4   | S    | Sign - Indicates if the ALU operation result is negative         | ALU            |
+| 3   | O    | Overflow - Indicates arithmetic overflow in ALU operations       | ALU            |
+| 2   | C    | Carry Out - Indicates carry out from the most significant bit in ALU operations | ALU |
+| 1   | Z    | Zero - Indicates the ALU operation result is zero  
+
+
 ## Getting Started
 
 [Instructions on how to set up and start working with the ECO32 project, including required tools and initial setup steps.]
