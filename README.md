@@ -25,7 +25,49 @@ ECO32 is an innovative microprocessor project designed for FPGA implementation, 
 - **WBU (Write-Back Unit)**
 - **XPU (Execution Processing Unit)**
 
-[Detailed descriptions of each module will be provided.]
+
+
+
+Control Registers 
+
+|-----------------|--------------------|-----------------|------------------|
+| Bank A Register | Description        | Bank B Register | Description      |
+|-----------------|--------------------|-----------------|------------------|
+| CRA0            | Flags              | CRB0            | Flags            |
+| CRA1            | -                  | CRB1            | reserved         |
+| CRA2            | -                  | CRB2            | reserved         |
+| CRA3            | -                  | CRB3            | reserved         |
+| CRA4            | -                  | CRB4            | reserved         |
+| CRA5            | -                  | CRB5            | reserved         |
+| CRA6            | Counter Lo         | CRB6            | Counter Hi       |
+| CRA7            | Processor ID       | CRB7            | Processor CAP    |
+| CRA8            | Thread ctx         | CRB8            | Thread param     |
+| CRA9            | Thread ctx         | CRB9            | Thread param     |
+| CRA10           | Debug control      | CRB10           | Debug flags      |
+| CRA11           | Debug control      | CRB11           | Debug flags      |
+| CRA12           | SystemTemp         | CRB12           | SystemTemp       |
+| CRA13           | System             | CRB13           | System           |
+| CRA14           | Event Ctrl         | CRB14           | Event Flags      |
+| CRA15           | Event Data Lo      | CRB15           | Event Data Hi    |
+| CRA16           | SysCall 0          | CRB16           | reserved         |
+| CRA17           | SysCall 1          | CRB17           | reserved         |
+| CRA18           | SysCall 2          | CRB18           | reserved         |
+| CRA19           | SysCall 3          | CRB19           | reserved         |
+| CRA20           | SysCall 4          | CRB20           | reserved         |
+| CRA21           | SysCall 5          | CRB21           | reserved         |
+| CRA22           | SysCall 6          | CRB22           | reserved         |
+| CRA23           | SysEvent           | CRB23           | reserved         |
+| CRA24           | RetAddr0 - Int Exc | CRB24           | Ret_ISW0         |
+| CRA25           | RetAddr1 - Dbg Exc | CRB25           | Ret_ISW1         |
+| CRA26           | RetAddr2 - Ext Exc | CRB26           | Ret_ISW2         |
+| CRA27           | RetAddr3 - TLB Exc | CRB27           | Ret_ISW3         |
+| CRA28           | JP_ADDR0           | CRB28           | JP_ISW0          |
+| CRA29           | JP_ADDR1           | CRB29           | JP_ISW1          |
+| CRA30           | JP_ADDR2           | CRB30           | JP_ISW2          |
+| CRA31           | JP_ADDR3           | CRB31           | JP_ISW3          |
+|-----------------|--------------------|-----------------|------------------|
+
+
 
 ## Getting Started
 
