@@ -1,31 +1,6 @@
 # ECO32 Microprocessor Project
 
-## Overview
-
-ECO32 is an innovative microprocessor project designed for FPGA implementation, developed within the research framework of FPGASystemsLab. It is a RISC architecture processor notable for its two complementary sets of general-purpose registers (GPRA and GPRB), effectively offering 64 registers due to unique addressing capabilities. This design allows for efficient data handling and direct connections to FPGA processing units without signal rerouting.
-
-## Key Features
-
-- **Dual Register Banks:** GPRA and GPRB complement each other, enabling operations such as address+offset to source data from both, enhancing the effective register count to 64.
-- **Direct FPGA Integration:** Lines directly enter processing units, eliminating the need for signal rerouting and boosting operational efficiency.
-- **Dual Register Writing:** Capability to write data to two registers simultaneously within a single clock cycle, facilitating operations like min/max which can output to two different registers concurrently.
-- **2-Way Cache Memory:** Each cache page contains 32 bytes, optimizing data retrieval and storage processes.
-- **Extensibility:** Designed to natively support extensions/accelerators and I/O devices without blocking processor operations.
-- **Hardware Multithreading:** Implements hardware dual-threading similar to HyperThreading, interweaving instructions from two threads every clock cycle, effectively managing interrupts and I/O handling.
-- **Performance:** Depending on the FPGA model and synthesis parameters, clock speeds range from 100MHz to 400MHz, making ECO32 a highly efficient processor for control units or as a core in audio/video encoding and decoding modules.
-
-## Modules
-
-- **FPU (Floating Point Unit)**
-- **IDU (Instruction Decode Unit)**
-- **IFU (Instruction Fetch Unit)**
-- **JPU (Jump Processing Unit)**
-- **MPU (Memory Processing Unit)**
-- **TRACE (Trace and Debug Module)**
-- **WBU (Write-Back Unit)**
-- **XPU (Execution Processing Unit)**
-
-## General Description
+## Overview of Eco32
 
 At the outset, it's crucial to note that the processor was designed for FPGA systems, drawing on experiences from other FPGA-based projects. The primary goals we aimed to achieve include:
 - High operating frequency, close to the maximum fabric frequency for the given FPGA.
@@ -47,7 +22,29 @@ The processor features an interface compatible with the NoC network's RingBus. H
 
 Below, the processor's features are described, starting from showing its structure from the programming side (registers, markers, commands, IO operations, multi-threading features) to a brief description of individual blocks (units).
 
-### Processor Registers (General Purpose and Control)
+## Key Features of hardware implementation
+
+- **Dual Register Banks:** GPRA and GPRB complement each other, enabling operations such as address+offset to source data from both, enhancing the effective register count to 64.
+- **Direct FPGA Integration:** Lines directly enter processing units, eliminating the need for signal rerouting and boosting operational efficiency.
+- **Dual Register Writing:** Capability to write data to two registers simultaneously within a single clock cycle, facilitating operations like min/max which can output to two different registers concurrently.
+- **2-Way Cache Memory:** Each cache page contains 32 bytes, optimizing data retrieval and storage processes.
+- **Extensibility:** Designed to natively support extensions/accelerators and I/O devices without blocking processor operations.
+- **Hardware Multithreading:** Implements hardware dual-threading similar to HyperThreading, interweaving instructions from two threads every clock cycle, effectively managing interrupts and I/O handling.
+- **Performance:** Depending on the FPGA model and synthesis parameters, clock speeds range from 100MHz to 400MHz, making ECO32 a highly efficient processor for control units or as a core in audio/video encoding and decoding modules.
+
+## Modules
+
+- **IDU (Instruction Decode Unit)**
+- **IFU (Instruction Fetch Unit)**
+- **JPU (Jump Processing Unit)**
+- **MPU (Main Processing Unit)**
+- **LSU (Load-Store Unit)**
+- **TRACE (Trace and Debug Module)**
+- **WBU (Write-Back Unit)**
+- **FPU (Floating Point Unit)**
+- **XPU (Extended Processing Unit)**
+
+## General Description
 
 The processor has two banks of general-purpose registers, A and B, with 32-bit registers accessible at the assembler level without the need to "switch banks". This term only relates to the situation of pairing registers when we want to use them simultaneously (description Axx:Bxx) where the command description contains information on how data from bank A and B are interpreted. For example, addressing through Axx:Bxx means that Axx contains the base address and Bxx contains the offset.
 Additionally, the processor includes two banks of control registers, CRA and CRB, which are also 32-bit and organized in pairs. This allows, for example, for the separation of registers used by the kernel for thread switching and storing data about addresses and control markers in one pair of CARxx:CRBxx.
