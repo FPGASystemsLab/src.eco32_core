@@ -51,7 +51,7 @@ Additionally, the processor includes two banks of control registers, CRA and CRB
 
 #### General Purpose and Control Registers
 
-|| GPR Bank A Register | Description        | GPR Bank B Register | Description      | CR Bank A Register | CR Description        | CR Bank B Register | CR Description      |
+| GPR Bank A Register | Description        | GPR Bank B Register | Description      | CR Bank A Register | CR Description        | CR Bank B Register | CR Description      |
 |---------------------|--------------------|---------------------|------------------|---------------------|-----------------------|---------------------|---------------------|
 | A0                  | ZERO               | B0                  | ZERO             | CRA0                | Flags                 | CRB0                | Flags               |
 | A1                  | VL                 | B1                  | VH (n)           | CRA1                | -                     | CRB1                | reserved            |
