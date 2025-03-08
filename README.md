@@ -46,6 +46,8 @@ The Instruction Fetch Unit is responsible for retrieving instructions from memor
 - Interface with the NoC network for instruction fetching
 - Event handling and management for instruction flow control
 
+For detailed information about the IFU, see [IFU Documentation](ifu/README.md).
+
 ### IDU (Instruction Decode Unit)
 The Instruction Decode Unit decodes fetched instructions and prepares them for execution. Its responsibilities include:
 - Instruction decoding and classification
@@ -54,6 +56,8 @@ The Instruction Decode Unit decodes fetched instructions and prepares them for e
 - Control word generation for downstream execution units
 - Register dependency tracking and hazard detection
 - Event and exception handling at the decode stage
+
+For detailed information about the IDU, see [IDU Documentation](idu/README.md).
 
 ### MPU (Main Processing Unit)
 The Main Processing Unit performs the core arithmetic and logical operations of the processor. Features include:
@@ -65,6 +69,8 @@ The Main Processing Unit performs the core arithmetic and logical operations of 
 - Support for dual-threading with context switching
 - Event handling and propagation
 
+For detailed information about the MPU, see [MPU Documentation](mpu/mpu.md).
+
 ### LSU (Load-Store Unit)
 The Load-Store Unit manages memory access operations, including:
 - Data cache management with 2-way associativity
@@ -75,6 +81,8 @@ The Load-Store Unit manages memory access operations, including:
 - Support for various addressing modes
 - Memory barrier and synchronization operations
 
+For detailed information about the LSU, see [LSU Documentation](lsu/README.md) and [Data Cache Documentation](lsu/data_cache.md).
+
 ### JPU (Jump Processing Unit)
 The Jump Processing Unit handles all control flow operations, including:
 - Conditional and unconditional jumps
@@ -83,6 +91,8 @@ The Jump Processing Unit handles all control flow operations, including:
 - Thread context switching support
 - Control register access for jump operations
 - Branch target calculation and validation
+
+For detailed information about the JPU, see [JPU Documentation](jpu/README.md).
 
 ### FPU (Floating Point Unit)
 The Floating Point Unit provides hardware support for floating-point operations:
@@ -111,6 +121,8 @@ The Write-Back Unit manages the final stage of instruction execution:
 - Result forwarding to handle data dependencies
 - Exception and event handling during write-back
 
+For detailed information about the WBU, see [WBU Documentation](wbu/README.md).
+
 ### TRACE (Trace and Debug Module)
 The Trace and Debug Module provides debugging and monitoring capabilities:
 - Instruction execution tracing
@@ -119,6 +131,8 @@ The Trace and Debug Module provides debugging and monitoring capabilities:
 - Performance monitoring
 - Debug interface for external tools
 - Event logging and analysis
+
+For detailed information about the TRACE module, see [TRACE Documentation](trace/README.md).
 
 ## Register Organization
 
